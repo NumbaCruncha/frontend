@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {
   ChakraProvider,
   Box,
@@ -9,34 +9,32 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
+import { Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
+import { Navbar } from "./components/Navbar/Navbar";
+import { Form } from "./components/Form/Form";
+import { Login } from "./components/Login/Login";
+import  Landing  from "./pages/Landing";
+import { UI } from "./components/Dashboard/UI";
 
-function App() {
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  const [currentUser, setCurrentUser] = useState(undefined);
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+     <ChakraProvider>
+  
+    {/* <Navbar /> */}
+      <Router>     
+        <Switch>
+          <Route path="/"><Landing /></Route>
+          <Route exact path="/login" ><Login /></Route>
+          <Route exact path="/dashboard" ><UI /></Route>
+        </Switch>
+      </Router>
     </ChakraProvider>
-  );
+  )
 }
 
 export default App;
