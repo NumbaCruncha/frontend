@@ -8,10 +8,10 @@ export default function Logo(props) {
   return (
     // <Box maxW="sm" mx="auto">      
 
-          <Button as="a" href="/"> 
+          <Button as="a" href="/" colorScheme="none"> 
           <HStack>
-            <Icon as={ FaMicroscope }  w={8} h={8} color="purple.500" />
-            <Text fontSize="lg" fontWeight="bold" color="purple.500">MicroInvestigators</Text>
+            <Icon as={ FaMicroscope }  w={8} h={8} color="purple.300" />
+            <Text  fontSize="lg" fontWeight="bold" color="purple.600">MicroInvestigators</Text>
             </HStack>
           </Button>
 

@@ -27,6 +27,7 @@ export const Login = () => {
       bg={mode('gray.50', 'inherit')}
     >
       <Box
+      
         overflowY="auto"
         flex="1"
         py={{
@@ -38,7 +39,7 @@ export const Login = () => {
           md: '10',
         }}
       >
-        <Box maxW="sm" mx="auto">
+        <Box maxW="sm" mx="auto" >
           {/* <Logo
             mb={{
               base: '14',
@@ -67,7 +68,14 @@ export const Login = () => {
         </Box>
       </Box>
 
-      <Box
+      <Box  
+        bgGradient={[
+          "linear(to-br, teal.300,yellow.400)",
+          "linear(to-b, blue.100, green.500)",
+          // "linear(to-b, orange.100, purple.300)",
+          
+        ]}
+  
         display={{
           base: 'none',
           lg: 'block',
@@ -81,7 +89,7 @@ export const Login = () => {
         pt="32"
       >
         <Badge
-          bg="blue.700"
+          bg="green.700"
           px="4"
           py="1"
           rounded="md"
@@ -98,13 +106,14 @@ export const Login = () => {
             lg: '3xl',
           }}
           maxW="sm"
+  
           letterSpacing="tight"
           lineHeight="normal"
         >
           Enagage in Citizen Science.          
         </Text>
         <Text mt="5" maxW="md" fontSize="lg">
-          Join a national effort to invovle students in real-world scientific research.
+          Students in real-world scientific research.
         </Text>
         <HStack
           as="a"

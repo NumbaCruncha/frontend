@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { PhoneIcon as IoCalendar, AddIcon as IoGrid, WarningIcon as IoHelpBuoy } from '@chakra-ui/icons'
 import { MdWeb } from 'react-icons/md'
+import { FaRegCalendarAlt, FaQuestion, FaBookOpen, FaPlus } from "react-icons/fa";
 // import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 
 export const links = [
@@ -19,19 +19,19 @@ export const links = [
         label: 'Get Help',
         description: 'Read our documentation and FAQs, or get in touch.',
         href: '#',
-        icon: <IoHelpBuoy />,
+        icon: <FaQuestion />,
       },
       {
-        label: 'Events & Meetups',
-        description: 'Discover and join your local Sketch community.',
+        label: 'Documentation',
+        description: 'Discover projects and campaings in your area.',
         href: '#',
-        icon: <IoCalendar />,
+        icon: <FaBookOpen />,
       },
       {
         label: 'Extensions',
         description: 'Do even more with Assistants, plugins and integrations.',
         href: '#',
-        icon: <IoGrid />,
+        icon: <FaPlus />,
       },
       {
         label: 'Blog',
