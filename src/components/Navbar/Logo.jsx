@@ -1,19 +1,19 @@
-import { chakra, useToken } from '@chakra-ui/react';
-import { Search2Icon, AddIcon, WarningIcon } from '@chakra-ui/icons';
-import { Icon, Text } from "@chakra-ui/react";
-import * as React from 'react';
-import { FaMicroscope } from "react-icons/fa";
+// import { chakra, useToken } from '@chakra-ui/react';
+// import { Search2Icon, AddIcon, WarningIcon } from '@chakra-ui/icons';
+// import { Icon, Text } from "@chakra-ui/react";
+// import * as React from 'react';
+// import { FaMicroscope } from "react-icons/fa";
 
-export const Logo = (props) => {
-  const { iconColor = 'currentColor', ...rest } = props
-  const color = useToken('colors', iconColor)
-  return (
-    <Icon as={ FaMicroscope }  w={8} h={8} color="purple.500">
-      <Text fontSize="md" >
-          Text with shadows
-        </Text>
+// export const Logo = (props) => {
+//   const { iconColor = 'currentColor', ...rest } = props
+//   const color = useToken('colors', iconColor)
+//   return (
+//     <Icon as={ FaMicroscope }  w={8} h={8} color="purple.500">
+//       <Text fontSize="md" >
+//           Text with shadows
+//         </Text>
 
-    </Icon>
+//     </Icon>
     
     // <chakra.svg aria-hidden viewBox="0 0 123 24" fill="none" {...rest}>
     //   <path

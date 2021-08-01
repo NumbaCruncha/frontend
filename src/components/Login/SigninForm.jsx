@@ -79,7 +79,7 @@ export const SigninForm = () => {
           type="submit"
           mt="8"
           w="full"
-          colorScheme="blue"
+          colorScheme="purple"
           fontSize="md"
           fontWeight="bold"
         >

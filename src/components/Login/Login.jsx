@@ -70,9 +70,9 @@ export const Login = () => {
 
       <Box  
         bgGradient={[
-          "linear(to-br, teal.300,yellow.400)",
-          "linear(to-b, blue.100, green.500)",
-          // "linear(to-b, orange.100, purple.300)",
+          "linear(to-br, blue.600,yellow.800)",
+          "linear(to-b, blue.600, purple.300)",
+          // "linear(to-b, orange.100, purple.300)"
           
         ]}
   
@@ -89,14 +89,14 @@ export const Login = () => {
         pt="32"
       >
         <Badge
-          bg="green.700"
+          bg="purple.500"
           px="4"
           py="1"
           rounded="md"
           letterSpacing="wide"
           color="whiteAlpha.900"
         >
-          Learning Support Platform
+          APPLICATION  
         </Badge>
         <Text
           mt="6"
@@ -110,10 +110,10 @@ export const Login = () => {
           letterSpacing="tight"
           lineHeight="normal"
         >
-          Enagage in Citizen Science.          
+          Do even more with MicroInvestigators Pro.          
         </Text>
         <Text mt="5" maxW="md" fontSize="lg">
-          Students in real-world scientific research.
+          Manage campaigns, produce beautiful analytics.
         </Text>
         <HStack
           as="a"
@@ -135,12 +135,12 @@ export const Login = () => {
           <Box>Learn more</Box>
           <HiOutlineExternalLink />
         </HStack>
-        <Box mt="10" position="relative">
+        {/* <Box mt="10" position="relative">
           <Img
             alt="App screenshot"
             src="https://res.cloudinary.com/chakra-ui-pro/image/upload/v1621082943/pro-website/screenshot-dark_w6jpks.png"
           />
-        </Box>
+        </Box> */}
       </Box>
     </Flex>
   )

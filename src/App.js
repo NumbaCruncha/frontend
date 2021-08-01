@@ -23,9 +23,7 @@ function App({ Component }) {
   // 2. Use at the root of your app
   const [currentUser, setCurrentUser] = useState(undefined);
   return (
-     <ChakraProvider>
-  
-    
+     <ChakraProvider>   
       <Navbar/>
     </ChakraProvider>
   )

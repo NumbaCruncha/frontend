@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MdWeb } from 'react-icons/md'
 import { FaRegCalendarAlt, FaQuestion, FaBookOpen, FaPlus } from "react-icons/fa";
-// import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
+
 
 export const links = [
   {
