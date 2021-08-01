@@ -6,16 +6,18 @@ import  beach  from "../static/images/beach.jpg";
 
 export default function Landing() {
   return (
-    <LandingLayout>
+    // <LandingLayout>
         
       <Hero
         title="Participate. Investigate."
-        subtitle="Join thousands of kiwi students and work with researchers to deliver real-world environmental science projects."
+        subtitle="Join thousands of students in New Zealand who are helping researchers understand our impact on the environment."
         image={beach}
         ctaText="Create your account now"
-        ctaLink="/signup"
+        ctaLink="/login"
+        boxShadow="xl"
       />
-    </LandingLayout>
+      
+    // </LandingLayout>
   );
 }
 

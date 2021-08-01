@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiOutlineExternalLink } from 'react-icons/hi'
-import { Logo } from './Logo'
+// import Logo  from '../ui/Logo';
 import { SigninForm } from './SigninForm'
 import { UnderlineLink } from './UnderlineLink'
 
@@ -39,7 +39,7 @@ export const Login = () => {
         }}
       >
         <Box maxW="sm" mx="auto">
-          <Logo
+          {/* <Logo
             mb={{
               base: '14',
               md: '32',
@@ -48,7 +48,7 @@ export const Login = () => {
             h="7"
             mx="auto"
             iconColor="blue.500"
-          />
+          /> */}
           <Box
             textAlign="center"
             mb={{

@@ -8,7 +8,7 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { Logo } from './Logo'
+import  Logo  from '../ui/Logo'
 import { NavLink } from './NavLink'
 import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
@@ -32,9 +32,9 @@ const MobileNavContext = (props) => {
             sm: 'visible',
           }}
         >
-          <Button as="a" colorScheme="purple">
+          {/* <Button as="a" colorScheme="purple">
             Get Started
-          </Button>
+          </Button> */}
         </Box>
       </Flex>
       <NavMenu animate={isOpen ? 'open' : 'closed'}>
@@ -77,9 +77,9 @@ const DesktopNavContent = (props) => {
         <Box as="a" href="#" color={mode('purple.600', 'purple.300')} fontWeight="bold">
           Sign In
         </Box>
-        <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
+        {/* <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
           Get Started
-        </Button>
+        </Button> */}
       </HStack>
     </Flex>
   )

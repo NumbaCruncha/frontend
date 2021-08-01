@@ -56,26 +56,32 @@ export default function Hero({
           {subtitle}
         </Heading>
         <Link to={ctaLink}>
-          <Button
+
+        <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
+          Get Started
+        </Button>
+
+          {/* <Button
             colorScheme="primary"
             borderRadius="8px"
             py="4"
             px="4"
             lineHeight="1"
             size="md"
+           
           >
             {ctaText}
-          </Button>
+          </Button> */}
         </Link>
-        <Text
+        {/* <Text
           fontSize="xs"
           mt={2}
           textAlign="center"
           color="primary.800"
           opacity="0.6"
         >
-          No credit card required.
-        </Text>
+          
+        </Text> */}
       </Stack>
       <Box w={{ base: "80%", sm: "60%", md: "50%" }} mb={{ base: 12, md: 0 }}>
         {/* TODO: Make this change every X secs */}

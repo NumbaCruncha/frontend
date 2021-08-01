@@ -9,7 +9,7 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
-import { Switch, Route, BrowserRouter as Router} from "react-router-dom";
+
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 import { Navbar } from "./components/Navbar/Navbar";
@@ -25,14 +25,8 @@ function App({ Component }) {
   return (
      <ChakraProvider>
   
-    {/* <Navbar /> */}
-      <Router>     
-        <Switch>
-          <Route path="/"><Landing /></Route>
-          <Route exact path="/login" ><Login /></Route>
-          <Route exact path="/dashboard" ><UI /></Route>
-        </Switch>
-      </Router>
+    
+      <Navbar/>
     </ChakraProvider>
   )
 }
