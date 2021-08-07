@@ -2,10 +2,11 @@ import { Box, Flex } from '@chakra-ui/react'
 import * as React from 'react'
 import { MobileTopBar } from './MobileTopBar'
 import { Sidebar } from './Sidebar'
+import { Form } from '../Form/Form'
 
 export const UI = () => {
   return (
-    <Flex h="100vh" flexDirection="column">
+    <Flex h="90vh" flexDirection="column">
       <MobileTopBar />
       <Flex flex="1" overflow="hidden">
         <Sidebar
@@ -14,7 +15,7 @@ export const UI = () => {
             md: 'flex',
           }}
         />
-        <Flex
+        {/* <Flex
           display={{
             base: 'none',
             lg: 'block',
@@ -25,10 +26,15 @@ export const UI = () => {
           borderRightWidth="1px"
           p="6"
         >
-          <Box borderWidth="2px" rounded="base" borderStyle="dashed" h="full" />
-        </Flex>
+
+          <Box borderWidth="2px" rounded="base" borderStyle="dashed" h="full">
+          <Form />
+          </Box>
+
+        </Flex> */}
+
         <Flex flex="1" p="6">
-          <Box borderWidth="2px" rounded="base" borderStyle="dashed" h="full" w="full" />
+          <Box borderWidth="2px" rounded="base" borderStyle="dashed" h="full" w="full"><Form /></Box>
         </Flex>
       </Flex>
     </Flex>

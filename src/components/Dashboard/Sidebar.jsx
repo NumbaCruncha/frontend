@@ -8,7 +8,7 @@ import {
   FaRegImages,
   FaRegQuestionCircle,
 } from 'react-icons/fa'
-import { Logo } from './Logo'
+// import { Logo } from './Logo'
 import { NavLink } from './NavLink'
 import { SearchField } from './SearchField'
 import { UserProfile } from './UserProfile'
@@ -24,9 +24,13 @@ export const Sidebar = (props) => {
     >
       <Flex direction="column" flex="1" pt="5" pb="4" overflowY="auto" px="4">
         <Box mb="6">
-          <Logo color={mode('purple.600', 'purple.400')} h="6" />
+          {/* <Logo color={mode('purple.600', 'purple.400')} h="6" /> */}
         </Box>
-
+        <UserProfile
+        name="Guest User"
+        image="https://images.unsplash.com/photo-1521296797187-726205347ca9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGxhZHklMjBzbWlsaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+        email="anon@example.com"
+      />
         <Box mb="6">
           <SearchField />
         </Box>
@@ -47,13 +51,10 @@ export const Sidebar = (props) => {
           </Stack>
         </Stack>
         <Spacer />
+       
       </Flex>
+ <Divider />
 
-      <UserProfile
-        name="Cindy Winston"
-        image="https://images.unsplash.com/photo-1521296797187-726205347ca9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGxhZHklMjBzbWlsaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-        email="cindy@example.com"
-      />
     </Flex>
   )
 }

@@ -10,11 +10,11 @@ export const Finnik = (props) => (
   </chakra.svg>
 )
 export const WorkScout = (props) => (
-  <Text>University of Otago</Text>
+  <Text>Local University</Text>
 )
 export const ChatMonkey = (props) => (
 
-    <Text>Auckland Institute of Technology</Text>
+    <Text>Institute of Technology</Text>
 
 )
 export const Plumtic = (props) => (

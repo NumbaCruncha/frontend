@@ -24,7 +24,7 @@ const MobileNavContext = (props) => {
           <ToggleButton isOpen={isOpen} onClick={onToggle} />
         </Box>
         <Box as="a" rel="home" mx="auto">
-          <Logo h="24px" iconColor="purple.400" />
+          <Logo h="24px" iconColor="blue.400" />
         </Box>
         <Box
           visibility={{
@@ -32,9 +32,9 @@ const MobileNavContext = (props) => {
             sm: 'visible',
           }}
         >
-          {/* <Button as="a" colorScheme="purple">
-            Get Started
-          </Button> */}
+          {/* <Button as="a" colorScheme="purple"> */}
+            {/* Get Started */}
+          {/* </Button> */}
         </Box>
       </Flex>
       <NavMenu animate={isOpen ? 'open' : 'closed'}>
@@ -47,8 +47,8 @@ const MobileNavContext = (props) => {
             </NavLink.Mobile>
           ),
         )}
-        <Button colorScheme="purple" w="full" size="lg" mt="5">
-          Try for free
+        <Button colorScheme="blue" href="/dashboard" w="full" size="lg" mt="5">
+          Get Started
         </Button>
       </NavMenu>
     </>
@@ -60,7 +60,7 @@ const DesktopNavContent = (props) => {
     <Flex className="nav-content__desktop" align="center" justify="space-between" {...props}>
       <Box as="a" href="#" rel="home">
         <VisuallyHidden>MicroInvestigators</VisuallyHidden>
-        <Logo h="6" iconColor="purple.500" />
+        <Logo h="6" iconColor="blue.500" />
       </Box>
       <HStack as="ul" id="nav__primary-menu" aria-label="Main Menu" listStyleType="none">
         {links.map((link, idx) => (
@@ -74,11 +74,11 @@ const DesktopNavContent = (props) => {
         ))}
       </HStack>
       <HStack spacing="8" minW="240px" justify="space-between">
-        <Box as="a" href="/login" color={mode('purple.600', 'purple.300')} fontWeight="bold">
+        <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">
           Sign In
         </Box>
         {/* <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
-          Get Started
+          Sign up for free
         </Button> */}
       </HStack>
     </Flex>

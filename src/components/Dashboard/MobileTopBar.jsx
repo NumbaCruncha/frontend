@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiOutlineMenu } from 'react-icons/hi'
-import { Logo } from './Logo'
+// import { Logo } from './Logo'
 import { Sidebar } from './Sidebar'
 import { useMobileMenuState } from './useMobileMenuState'
 
@@ -28,7 +28,7 @@ export const MobileTopBar = () => {
       }}
       borderBottomWidth="1px"
     >
-      <Logo h="6" iconColor="purple.600" />
+      {/* <Logo h="6" iconColor="purple.600" /> */}
       <IconButton
         onClick={onOpen}
         variant="unstyled"

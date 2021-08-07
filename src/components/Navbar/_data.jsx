@@ -5,11 +5,11 @@ import { FaRegCalendarAlt, FaQuestion, FaBookOpen, FaPlus } from "react-icons/fa
 
 export const links = [
   {
-    label: 'For Educators',
+    label: 'For Researchers',
     href: '#',
   },
   {
-    label: 'For Students',
+    label: 'For Educators',
     href: '#',
   },
   {

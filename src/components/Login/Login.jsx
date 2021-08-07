@@ -40,16 +40,6 @@ export const Login = () => {
         }}
       >
         <Box maxW="sm" mx="auto" >
-          {/* <Logo
-            mb={{
-              base: '14',
-              md: '32',
-            }}
-            w="auto"
-            h="7"
-            mx="auto"
-            iconColor="blue.500"
-          /> */}
           <Box
             textAlign="center"
             mb={{
@@ -70,8 +60,8 @@ export const Login = () => {
 
       <Box  
         bgGradient={[
-          "linear(to-br, blue.600,yellow.800)",
-          "linear(to-b, blue.600, purple.300)",
+          "linear(to-br, blue.800,yellow.300)",
+          "linear(to-b, blue.600, purple.600)",
           // "linear(to-b, orange.100, purple.300)"
           
         ]}
@@ -89,7 +79,7 @@ export const Login = () => {
         pt="32"
       >
         <Badge
-          bg="purple.500"
+          bg="blue.500"
           px="4"
           py="1"
           rounded="md"
