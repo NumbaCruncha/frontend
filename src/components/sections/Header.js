@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
-import Logo from "../ui/Logo";
+import Logo from "../Logo/Logo";
 
 const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   return (

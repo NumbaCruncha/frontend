@@ -5,11 +5,11 @@ import { Login } from "../Login/Login";
 import { UI } from "../Dashboard/UI";
 import { Landing }from "../Landing/Landing";
 import { Switch, Route, BrowserRouter as Router} from "react-router-dom";
-import { Logo } from '../ui/Logo';
+import { Logo } from '../Logo/Logo';
 import AuthService from "../../services/auth.service";
 
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -46,14 +46,16 @@ export const Navbar = () => {
           <NavContent.Mobile
             display={{
               base: 'flex',
-              lg: 'none',
+              lg: 'none'
             }}
+            // currentUser={this.user}
           />
           <NavContent.Desktop
             display={{
               base: 'none',
-              lg: 'flex',
+              lg: 'flex'     
             }}
+            currentUser={currentUser}
           />
         
         </Box>
@@ -62,7 +64,7 @@ export const Navbar = () => {
       <Router>  
         <Switch>
           <Route exact path="/"><Landing /></Route>
-          <Route exact path="/login" ><Login /></Route>
+          <Route exact path="/login" ><Login  /></Route>
           <Route exact path="/dashboard" ><UI /></Route>
         </Switch>
       </Router>
