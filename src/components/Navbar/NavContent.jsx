@@ -14,6 +14,11 @@ import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
 import { ToggleButton } from './ToggleButton'
 import { links } from './_data'
+import { Logout } from "../Logout/Logout";
+import { Link } from 'react-router-dom'
+import { Landing }from "../Landing/Landing";
+import { Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import AuthService from "../../services/auth.service";
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -48,19 +53,31 @@ const MobileNavContext = (props) => {
             </NavLink.Mobile>
           ),
         )}
-          {
+          {/* {
           currentUser ? (
-            <Box as="a" href="/logout" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign Out</Box>
+            <Box as="a" color={mode('blue.600', 'blue.300')} fontWeight="bold">
+              Sign Out
+              <Logout />
+              </Box>
             ) : (
             <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Box>)
-            }
+            } */}
       </NavMenu>
     </>
   )
 }
 
 const DesktopNavContent = (props) => {
-  const { currentUser } = props
+
+  const { currentUser, loggedIn } = props
+
+  const logOut = () => {
+    AuthService.logout();
+    <Switch><Route exact path={["/", "/home"]} component={Landing} /></Switch>
+    
+  };
+
+
   return (
     <Flex className="nav-content__desktop" align="center" justify="space-between" {...props}>
       <Box as="a" href="#" rel="home">
@@ -80,20 +97,23 @@ const DesktopNavContent = (props) => {
       </HStack>
       
       <HStack spacing="8" minW="240px" justify="space-between">
+              
+              
+      <Button 
+        variantColor="teal" 
+        variant="outline" 
+        type="submit" 
+        width="full" 
+        mt={4}>Sign In
+          {currentUser ? (
+            <Logout isIndeterminate size="24px" color="teal" />
+          ) : (
+            <Button onClick={logOut} size="24px" color="teal" type="submit" width="full" mt={4} a="Sign In"/>
+          )}
+          </Button>
 
+              
 
-
-        
-          {
-          currentUser ? (
-            <Box as="a" href="/logout" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign Out</Box>
-            ) : (
-            <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Box>)
-            }
-        
-        {/* <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
-          Sign up for free
-        </Button> */}
       </HStack>
     </Flex>
   )
