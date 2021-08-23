@@ -16,8 +16,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    
-
     if (user) {
       setCurrentUser(user);
       setLoggedIn(!loggedIn);
@@ -25,8 +23,6 @@ export const Navbar = () => {
       // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
   }, []);
-
-  
 
   
   return (
@@ -48,6 +44,7 @@ export const Navbar = () => {
               lg: 'none'
             }}
             currentUser={currentUser}
+            isLoggedIn = {loggedIn}
           />
           <NavContent.Desktop
             display={{
@@ -55,8 +52,8 @@ export const Navbar = () => {
               lg: 'flex'     
             }}
             currentUser={currentUser}
-          />
-        
+            isLoggedIn = {loggedIn}
+          />       
         </Box>
         
       </Box>   

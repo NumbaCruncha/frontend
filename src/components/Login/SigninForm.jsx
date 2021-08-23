@@ -17,7 +17,8 @@ import React, { useState, useRef } from "react";
 import { UnderlineLink } from './UnderlineLink'
 import AuthService from "../../services/auth.service";
 // import { ErrorMessage }from '../ErrorMessage/ErrorMessage';
-
+import { Landing }from "../Landing/Landing";
+import { Redirect, Switch, Route, BrowserRouter as Router} from "react-router-dom";
 
 export const SigninForm = (props) => {
 
@@ -51,7 +52,8 @@ export const SigninForm = (props) => {
       await AuthService.login(username, password);
       setIsLoggedIn(true);
       setIsLoading(false);
-      setShowPassword(true);
+      // setShowPassword(true);
+      <Switch><Route exact path={["/"]} component={Landing} /></Switch>
 
     } catch (error) {
       setError('Invalid username or password');
@@ -62,7 +64,10 @@ export const SigninForm = (props) => {
     }
   };
    
-
+  if (isLoggedIn) {
+    return <Redirect to='/' />
+   }
+ 
   return (
     <form
       onSubmit={handleSubmit}

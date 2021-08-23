@@ -14,15 +14,17 @@ import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
 import { ToggleButton } from './ToggleButton'
 import { links } from './_data'
+import { Login } from "../Login/Login";
 import { Logout } from "../Logout/Logout";
 import { Link } from 'react-router-dom'
 import { Landing }from "../Landing/Landing";
-import { Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import { Redirect, Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import AuthService from "../../services/auth.service";
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = props
+
   return (
     <>
       <Flex align="center" justify="space-between" className="nav-content__mobile" {...props}>
@@ -53,6 +55,7 @@ const MobileNavContext = (props) => {
             </NavLink.Mobile>
           ),
         )}
+
           {/* {
           currentUser ? (
             <Box as="a" color={mode('blue.600', 'blue.300')} fontWeight="bold">
@@ -69,12 +72,20 @@ const MobileNavContext = (props) => {
 
 const DesktopNavContent = (props) => {
 
-  const { currentUser, loggedIn } = props
+  const { currentUser, isLoggedIn } = props
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isLoggedin } = props;
 
   const logOut = () => {
     AuthService.logout();
-    <Switch><Route exact path={["/", "/home"]} component={Landing} /></Switch>
-    
+    onClose();     
+    if (props.isLoggedIn) {
+      return <Redirect to='/' />
+     }
+    }
+
+  const logIn = () => {
+    <Switch><Route exact path={["/login"]} component={Login} /></Switch>
   };
 
 
@@ -97,20 +108,12 @@ const DesktopNavContent = (props) => {
       </HStack>
       
       <HStack spacing="8" minW="240px" justify="space-between">
-              
-              
-      <Button 
-        variantColor="teal" 
-        variant="outline" 
-        type="submit" 
-        width="full" 
-        mt={4}>Sign In
-          {currentUser ? (
-            <Logout isIndeterminate size="24px" color="teal" />
-          ) : (
-            <Button onClick={logOut} size="24px" color="teal" type="submit" width="full" mt={4} a="Sign In"/>
-          )}
-          </Button>
+
+        { isLoggedIn ? (
+            <Logout />
+            ) : (
+            <Button as="a" href="/login" color={mode('green.600', 'blue.300')} fontWeight="bold">Sign In</Button>)
+            }    
 
               
 
