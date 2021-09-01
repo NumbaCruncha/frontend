@@ -7,23 +7,22 @@ import {
   VisuallyHidden,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import * as React from 'react'
+import React, { useContext } from 'react';
 import  Logo  from '../Logo/Logo'
 import { NavLink } from './NavLink'
 import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
 import { ToggleButton } from './ToggleButton'
 import { links } from './_data'
-import { Login } from "../Login/Login";
 import { Logout } from "../Logout/Logout";
-import { Link } from 'react-router-dom'
-import { Landing }from "../Landing/Landing";
-import { Redirect, Switch, Route, BrowserRouter as Router} from "react-router-dom";
-import AuthService from "../../services/auth.service";
+import { Text } from "@chakra-ui/react"
+import UserContext from '../User/User';
+
+
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
-  const { currentUser } = props
+  const { currentUser, isLoggedIn } = props
 
   return (
     <>
@@ -72,22 +71,8 @@ const MobileNavContext = (props) => {
 
 const DesktopNavContent = (props) => {
 
-  const { currentUser, isLoggedIn } = props
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLoggedin } = props;
-
-  const logOut = () => {
-    AuthService.logout();
-    onClose();     
-    if (props.isLoggedIn) {
-      return <Redirect to='/' />
-     }
-    }
-
-  const logIn = () => {
-    <Switch><Route exact path={["/login"]} component={Login} /></Switch>
-  };
-
+  const currentUser = useContext(UserContext);
+  
 
   return (
     <Flex className="nav-content__desktop" align="center" justify="space-between" {...props}>
@@ -106,18 +91,21 @@ const DesktopNavContent = (props) => {
           </Box>
         ))}
       </HStack>
-      
-      <HStack spacing="8" minW="240px" justify="space-between">
 
-        { isLoggedIn ? (
-            <Logout />
-            ) : (
-            <Button as="a" href="/login" color={mode('green.600', 'blue.300')} fontWeight="bold">Sign In</Button>)
-            }    
 
-              
 
-      </HStack>
+     {  currentUser ? (
+        <HStack spacing="8" minW="240px" justify="space-between">
+        <Text>Welcome back {currentUser}</Text>
+        <Logout />
+        </HStack>
+     ) : (
+          <HStack spacing="8" minW="240px" justify="space-between">
+          <Button as="a" href="/login" color={mode('green.600', 'blue.300')} fontWeight="bold">Sign In</Button>
+          </HStack> 
+         )
+    }
+        
     </Flex>
   )
 }

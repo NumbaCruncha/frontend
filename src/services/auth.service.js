@@ -11,6 +11,8 @@ const axiosDefaultConfig = {
 };
 
 const axios = require ('axios').create(axiosDefaultConfig);
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.post["Accept"] = "*/*";
 
 
 const register = (username, email, first_name, last_name, password, password2) => {
@@ -32,23 +34,49 @@ const login = (username, password) => {
     .then((response) => {
         if (response.data.access) {
             localStorage.setItem("user", JSON.stringify(response.data));
+            localStorage.setItem("username", JSON.stringify(username));
         }
         return response.data;
     });
 };
 
+// const logout = () => {
+//     return (
+
+//         axios.post(API_URL + 'auth/logout/', {
+//             headers: authHeader() })
+//     .then(localStorage.removeItem("user"))
+//     )
+// };
+
+
 
 const logout = () => {
-    return axios.post(API_URL + 'auth/logout/', {headers: authHeader() })
-    .then(localStorage.removeItem("user"));
-
-    // });
-};
-
     
+    let reqOptions = {
+            url: API_URL + 'auth/logout_all/',
+            method: "POST",
+            headers: authHeader(),
+            };
+
+    return (
+            axios.request(reqOptions)
+            .then(function (response) { console.log(response.data); })
+            .then(localStorage.removeItem("user"))
+            .then(localStorage.removeItem("username"))
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    }
+                }) 
+    )};
+    
+   
 
 const getCurrentUser = () => {
-    return JSON.parse(localStorage.getItem("user"));
+    return JSON.parse(localStorage.getItem("username"));
 };
 
 

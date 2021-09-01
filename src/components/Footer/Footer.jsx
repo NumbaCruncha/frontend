@@ -173,15 +173,3 @@ export const Footer = () => (
     </Box>
   </Box>
 )
-
-const Heart = () => (
-  <Box
-    display="inline-block"
-    mx="1"
-    color={mode('blue.500', 'blue.300')}
-    fontSize="xs"
-    role="img"
-    aria-label="Love"
-    as={FaHeart}
-  />
-)

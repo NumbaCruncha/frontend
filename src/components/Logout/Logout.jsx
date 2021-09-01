@@ -8,25 +8,21 @@ import {
     ModalCloseButton,
   } from "@chakra-ui/react"
   import { useDisclosure } from "@chakra-ui/react"
-  import { Button, ButtonGroup } from "@chakra-ui/react"
-  import AuthService from "../../services/auth.service"
-  import { Redirect, useHistory, Switch, Route, BrowserRouter as Router} from "react-router-dom";
-  
+  import { Button } from "@chakra-ui/react"
+  import AuthService from "../../services/auth.service";
+  import { Redirect } from "react-router-dom";
+ 
+
+
 
 export const Logout = (props) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { isLoggedin } = props;
-
     const logOut = () => {
       AuthService.logout();
-      onClose();     
-      if (props.isLoggedIn) {
-        return <Redirect to='/' />
-       }
-      }
-      
-    
+      onClose();
+       };
+   
         return (
           <>
             <Button onClick={onOpen}>Sign Out</Button>

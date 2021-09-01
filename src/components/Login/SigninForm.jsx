@@ -17,8 +17,7 @@ import React, { useState, useRef } from "react";
 import { UnderlineLink } from './UnderlineLink'
 import AuthService from "../../services/auth.service";
 // import { ErrorMessage }from '../ErrorMessage/ErrorMessage';
-import { Landing }from "../Landing/Landing";
-import { Redirect, Switch, Route, BrowserRouter as Router} from "react-router-dom";
+
 
 export const SigninForm = (props) => {
 
@@ -34,27 +33,27 @@ export const SigninForm = (props) => {
 
 
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
+  // const onChangeUsername = (e) => {
+  //   const username = e.target.value;
+  //   setUsername(username);
+  // };
   
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
+  // const onChangePassword = (e) => {
+  //   const password = e.target.value;
+  //   setPassword(password);
+  // };
   
   const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
-
+   
     try {
       await AuthService.login(username, password);
       setIsLoggedIn(true);
       setIsLoading(false);
-      // setShowPassword(true);
-      <Switch><Route exact path={["/"]} component={Landing} /></Switch>
-
+      
+      
+ 
     } catch (error) {
       setError('Invalid username or password');
       setIsLoading(false);
@@ -64,13 +63,12 @@ export const SigninForm = (props) => {
     }
   };
    
-  if (isLoggedIn) {
-    return <Redirect to='/' />
-   }
+
  
   return (
     <form
       onSubmit={handleSubmit}
+      
     >
       <Stack spacing="-px">
         <FormControl isRequired id="username">

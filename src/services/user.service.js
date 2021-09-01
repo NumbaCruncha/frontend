@@ -13,6 +13,7 @@ const axiosDefaultConfig = {
 const axios = require ('axios').create(axiosDefaultConfig);
 
 
+
 const getPublicContent = (props) => {
     return axios.get(API_URL + props);
 };
@@ -24,13 +25,14 @@ const getUserBoard = () => {
 
 
 const getModeratorBoard = () => {
-    return axios.get(API_URL + "/auth/user/", { headers: authHeader() });
+    return axios.get(API_URL + "/auth/mod/", { headers: authHeader() });
 };
 
 
 const getAdminBoard = () => {
-    return axios.get(API_URL + "/auth/user/", { headers: authHeader() });
+    return axios.get(API_URL + "/auth/admin/", { headers: authHeader() });
 };
+
 
 export default {
     getPublicContent,

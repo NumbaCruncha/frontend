@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   HStack,
-  Img,
   Text,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
@@ -15,7 +14,10 @@ import { SigninForm } from './SigninForm'
 import { UnderlineLink } from './UnderlineLink'
 
 export const Login = () => {
+
+
   return (
+
     <Flex
       direction={{
         base: 'column',
@@ -54,7 +56,9 @@ export const Login = () => {
               Need an account? <UnderlineLink>Sign up for free</UnderlineLink>
             </Text>
           </Box>
+
           <SigninForm />
+          
         </Box>
       </Box>
 

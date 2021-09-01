@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Text , Icon, HStack, Button} from "@chakra-ui/react";
+import { Text , Icon, HStack, Button} from "@chakra-ui/react";
 import { FaMicroscope } from "react-icons/fa";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+
 
 
 export default function Logo(props) {

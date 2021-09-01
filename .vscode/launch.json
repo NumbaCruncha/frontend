@@ -5,6 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Launch Edge against localhost",
+            "cwd": "/home/michael/Microplastics-frontend/frontend",
+            // "type": "vscode-edge-devtools.debug",
+            "url": "http://localhost:3000",
+            // "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webRoot": "${workspaceRoot}/frontend"
+            }
+            // "pathMapping": {
+            //     "/frontend/": "${workspaceFolder}"
+            //   },
+        },
+        {
             "type": "vscode-edge-devtools.debug",
             "request": "launch",
             "name": "Launch Microsoft Edge and open the Edge DevTools",
@@ -29,21 +44,7 @@
             "name": "Run npm start",
             "request": "launch",
             "type": "node-terminal"
-        },
-        {
-            "type": "pwa-msedge",
-            "request": "launch",
-            "name": "Launch Edge against localhost",
-            "cwd": "/home/michael/Microplastics-frontend/frontend",
-            // "type": "vscode-edge-devtools.debug",
-            "url": "http://localhost:3000",
-            // "webRoot": "${workspaceFolder}",
-            "sourceMapPathOverrides": {
-                "webRoot": "${workspaceRoot}/frontend"
-            }
-            // "pathMapping": {
-            //     "/frontend/": "${workspaceFolder}"
-            //   },
         }
+
     ]
 }

@@ -1,30 +1,42 @@
-import React, { useState, useEffect } from "react";
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import React, { useState, useEffect, createContext } from "react";
+import { ChakraProvider, } from '@chakra-ui/react';
 import { Navbar } from "./components/Navbar/Navbar";
-import { Form } from "./components/Form/Form";
-import { Login } from "./components/Login/Login";
-import  Landing  from "./pages/Landing";
-import { UI } from "./components/Dashboard/UI";
+import UserContext from './components/User/User';
+import AuthService from '../src/services/auth.service';
 
 
 function App({ Component }) {
-  // 2. Use at the root of your app
+
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [loggedin, setLoggedIn] = useState(false);
+  // 2. Use at the root of your app
+
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    return user
+      });
+
+
+    if (user) {
+      setCurrentUser(user);
+      setLoggedIn(true);
+      console.log('User is logged In:', loggedin);
+      // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
+      // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+    } else {
+      setLoggedIn(false);
+      setCurrentUser(undefined);
+      console.log('User is logged In:', loggedin);
+    } 
+
+
+
   return (
-     <ChakraProvider>   
-      <Navbar/>
+     <ChakraProvider> 
+       <UserContext.Provider value={currentUser}>
+       <Navbar/>
+       </UserContext.Provider>
     </ChakraProvider>
   )
 }
