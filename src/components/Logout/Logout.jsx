@@ -9,8 +9,10 @@ import {
   } from "@chakra-ui/react"
   import { useDisclosure } from "@chakra-ui/react"
   import { Button } from "@chakra-ui/react"
-  import AuthService from "../../services/auth.service";
+  // import AuthService from "../../services/auth.service";
   import { Redirect } from "react-router-dom";
+  import { logout, useAuthState, useAuthDispatch } from '../../context';
+
  
 
 
@@ -18,8 +20,10 @@ import {
 export const Logout = (props) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const dispatch = useAuthDispatch();
+    const { username, password } = useAuthState();
     const logOut = () => {
-      AuthService.logout();
+      logout(dispatch, {username, password});
       onClose();
        };
    

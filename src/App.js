@@ -1,44 +1,33 @@
-import React, { useState, useEffect, createContext } from "react";
+import React from "react";
 import { ChakraProvider, } from '@chakra-ui/react';
-import { Navbar } from "./components/Navbar/Navbar";
-import UserContext from './components/User/User';
-import AuthService from '../src/services/auth.service';
+import { BrowserRouter as Router,  Switch } from 'react-router-dom';
+import routes from '../src/config/routes';
+import { AuthProvider } from './context';
+import AppRoute from './components/AppRoute';
 
 
 function App({ Component }) {
 
-  const [currentUser, setCurrentUser] = useState(undefined);
-  const [loggedin, setLoggedIn] = useState(false);
-  // 2. Use at the root of your app
-
-
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-    return user
-      });
-
-
-    if (user) {
-      setCurrentUser(user);
-      setLoggedIn(true);
-      console.log('User is logged In:', loggedin);
-      // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-      // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
-    } else {
-      setLoggedIn(false);
-      setCurrentUser(undefined);
-      console.log('User is logged In:', loggedin);
-    } 
-
-
-
   return (
-     <ChakraProvider> 
-       <UserContext.Provider value={currentUser}>
-       <Navbar/>
-       </UserContext.Provider>
-    </ChakraProvider>
-  )
+    
+	<ChakraProvider> 
+		<AuthProvider>
+			<Router>	
+				<Switch>
+					{routes.map((route) => (
+						<AppRoute
+							key={route.path}
+							path={route.path}
+							exact={route.exact}
+							component={route.component}
+							isPrivate={route.isPrivate}
+						/>
+					))}
+				</Switch>
+			</Router>    	
+		</AuthProvider>
+	</ChakraProvider>	
+	);
 }
 
 export default App;

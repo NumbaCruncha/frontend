@@ -15,9 +15,15 @@ export const Navbar = () => {
 
   return (
 
-    <Box minH="640px">
-      <Box as="header" bg={mode('white', 'gray.800')} position="relative" zIndex="10">
+    // <Box minH="640px" borderWidth="10px" borderColor="yellow.500">
+      <Box as="header" bg={mode('white', 'gray.800')}
+      //  borderColor="red.500" 
+      //  borderWidth="10px" 
+       position="relative" 
+       zIndex="10">
         <Box
+        // borderWidth="10px"
+        // borderColor="blue.500"
           as="nav"
           aria-label="Main navigation"
           maxW="7xl"
@@ -45,14 +51,14 @@ export const Navbar = () => {
         </Box>
         
       </Box>   
-      <Router>  
+      /* <Router>  
         <Switch>
           <Route exact path="/"><Landing /></Route>
           <Route exact path="/login" ><Login /></Route>
           <Route exact path="/dashboard" ><UI /></Route>
         </Switch>
-      </Router>
-    </Box>
+      </Router> */
+   
 
 
   )

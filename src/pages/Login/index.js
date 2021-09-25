@@ -10,14 +10,17 @@ import {
 import * as React from 'react'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 // import Logo  from '../ui/Logo';
-import { SigninForm } from './SigninForm'
+import SigninForm   from './SigninForm'
 import { UnderlineLink } from './UnderlineLink'
+import { Navbar } from '../../components/Navbar/Navbar';
 
-export const Login = () => {
+
+function Login(props) {
 
 
   return (
-
+    <div>
+    <Navbar/>
     <Flex
       direction={{
         base: 'column',
@@ -28,6 +31,7 @@ export const Login = () => {
       height="100%"
       bg={mode('gray.50', 'inherit')}
     >
+      
       <Box
       
         overflowY="auto"
@@ -137,6 +141,8 @@ export const Login = () => {
         </Box> */}
       </Box>
     </Flex>
+    </div>
   )
 }
 
+export default Login;

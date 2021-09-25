@@ -1,8 +1,8 @@
-export default function authHeader() {
-    const user = JSON.parse(localStorage.getItem("user"));
+export default function authHeader(props) {
+    // const token = JSON.parse(localStorage.getItem("token"));
 
-    if (user && user.access) {
-        return { "Authorization": "Bearer " + user.access}
+    if (props) {
+        return { "Authorization": "Bearer " + props}
     } else {
         return {};
     }
