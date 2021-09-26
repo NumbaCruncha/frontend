@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MdWeb } from 'react-icons/md'
-import { FaRegCalendarAlt, FaQuestion, FaBookOpen, FaPlus } from "react-icons/fa";
+import { FaQuestion, FaBookOpen, FaPlus } from "react-icons/fa";
 
 
 export const links = [

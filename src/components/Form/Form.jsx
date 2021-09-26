@@ -22,8 +22,17 @@ import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { FieldGroup } from './FieldGroup'
 import { CurrencySelect } from './CurrencySelect'
 import { LanguageSelect } from './LanguageSelect'
+import { useAuthState, useAuthDispatch } from '../../context';
 
-export const Form = () => (
+// let user = localStorage.getItem(JSON.parse('currentUser')
+
+
+function Form() {
+  let { loading, errorMessage, token, user } = useAuthState();
+  const username = user.username
+  const email = user.email
+
+  return(
   <Box
     px={{
       base: '4',
@@ -41,18 +50,18 @@ export const Form = () => (
     >
       <Stack spacing="4" divider={<StackDivider />}>
         <Heading size="lg" as="h1" paddingBottom="4">
-          Account Settings
+          Account Settings 
         </Heading>
         <FieldGroup title="Personal Info">
           <VStack width="full" spacing="6">
             <FormControl id="name">
               <FormLabel>Name</FormLabel>
-              <Input type="text" maxLength={255} />
+              <Input type="text" value={username} maxLength={255} />
             </FormControl>
 
             <FormControl id="email">
               <FormLabel>Email</FormLabel>
-              <Input type="email" isReadOnly value="joe@chakra-ui.com" />
+              <Input type="email" value={email}/>
             </FormControl>
 
             <FormControl id="bio">
@@ -117,4 +126,6 @@ export const Form = () => (
       </FieldGroup>
     </form>
   </Box>
-)
+  )};
+
+export default Form;

@@ -13,66 +13,83 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import { Icon } from "@chakra-ui/react"
-import React, { useState, useRef } from "react";
-import { UnderlineLink } from './UnderlineLink'
-import AuthService from "../../services/auth.service";
+import React, { useState, useRef, Redirect } from "react";
+import { UnderlineLink } from './UnderlineLink';
+import { useHistory } from "react-router-dom";
+import AuthService from '../../services/auth.service';
+import { loginUser, useAuthState, useAuthDispatch } from '../../context';
+import { FaLessThanEqual } from 'react-icons/fa';
 // import { ErrorMessage }from '../ErrorMessage/ErrorMessage';
 
 
-export const SigninForm = (props) => {
+
+function SigninForm(props) {
 
   const [showPassword, setShowPassword] = useState(false);
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useAuthDispatch();
+	const { loading } = useAuthState();
+
+
+
+  // const [error, setError] = useState('');
+  // const [isLoading, setIsLoading] = useState(false);
   const form = useRef();
   const checkBtn = useRef();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const history = useHistory();
 
-
-
-  // const onChangeUsername = (e) => {
-  //   const username = e.target.value;
-  //   setUsername(username);
-  // };
-  
-  // const onChangePassword = (e) => {
-  //   const password = e.target.value;
-  //   setPassword(password);
-  // };
   
   const handleSubmit = async e => {
     e.preventDefault();
-    setIsLoading(true);
-   
-    try {
-      await AuthService.login(username, password);
-      setIsLoggedIn(true);
-      setIsLoading(false);
+		try {
+			let response = await loginUser(dispatch, { username, password });
+      
+
+      history.push('/dashboard');
+      // console.log(response);
+      }
+    catch (error) {
+			console.log(error);
+      // setShowPassword(false);
+		}
+	};
+
+
+
+    // try {
+    //   await AuthService.login(username, password);
+    //   setIsLoggedIn(true);
+    //   setIsLoading(false);
       
       
  
-    } catch (error) {
-      setError('Invalid username or password');
-      setIsLoading(false);
-      setUsername('');
-      setPassword('');
-      setShowPassword(false);
-    }
-  };
+    // } catch (error) {
+    //   setError('Invalid username or password');
+    //   setIsLoading(false);
+    //   setUsername('');
+    //   setPassword('');
+    //   setShowPassword(false);
+    // }
+  // };
    
 
  
   return (
+    
+
     <form
       onSubmit={handleSubmit}
-      
     >
+   
       <Stack spacing="-px">
         <FormControl isRequired id="username">
           <FormLabel srOnly>Username</FormLabel>
+          
           <Input
             size="lg"
             name="username"
@@ -153,7 +170,7 @@ export const SigninForm = (props) => {
         type="submit" 
         width="full" 
         mt={4}>
-          {isLoading ? (
+          {loading ? (
             <CircularProgress isIndeterminate size="24px" color="teal" />
           ) : (
             'Sign In'
@@ -163,3 +180,5 @@ export const SigninForm = (props) => {
     </form>
   )
 }
+
+export default SigninForm;

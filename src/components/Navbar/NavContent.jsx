@@ -7,17 +7,25 @@ import {
   VisuallyHidden,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import * as React from 'react'
+import React, { useContext, Redirect } from 'react';
 import  Logo  from '../Logo/Logo'
 import { NavLink } from './NavLink'
 import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
 import { ToggleButton } from './ToggleButton'
 import { links } from './_data'
+import { Logout } from '../Logout/Logout';
+import { Text, Badge } from "@chakra-ui/react"
+import UserContext from '../User/User';
+import { loginUser, useAuthState, useAuthDispatch } from '../../context';
+
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
-  const { currentUser } = props
+  
+  let { token, user } = useAuthState();
+  const username = user.username
+
   return (
     <>
       <Flex align="center" justify="space-between" className="nav-content__mobile" {...props}>
@@ -48,11 +56,15 @@ const MobileNavContext = (props) => {
             </NavLink.Mobile>
           ),
         )}
+
           {
-          currentUser ? (
-            <Box as="a" href="/logout" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign Out</Box>
+          token ? (
+            <Box as="a" color={mode('blue.600', 'blue.300')} fontWeight="bold">
+              <Text fontSize="lg" >Welcome Back { username }</Text>
+              <Logout />
+              </Box>
             ) : (
-            <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Box>)
+            <Button as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Button>)
             }
       </NavMenu>
     </>
@@ -60,12 +72,18 @@ const MobileNavContext = (props) => {
 }
 
 const DesktopNavContent = (props) => {
-  const { currentUser } = props
+
+  let { token, user } = useAuthState();
+  const username = user.username
+
   return (
     <Flex className="nav-content__desktop" align="center" justify="space-between" {...props}>
-      <Box as="a" href="#" rel="home">
+      <Box 
+      as="a"
+      rel="home"
+      >
         <VisuallyHidden>MicroInvestigators</VisuallyHidden>
-        <Logo h="6" iconColor="blue.500" />
+        <Logo href="/login" as="button"  h="6" iconColor="blue.500" />
       </Box>
       <HStack as="ul" id="nav__primary-menu" aria-label="Main Menu" listStyleType="none">
         {links.map((link, idx) => (
@@ -78,23 +96,25 @@ const DesktopNavContent = (props) => {
           </Box>
         ))}
       </HStack>
-      
-      <HStack spacing="8" minW="240px" justify="space-between">
-
-
-
+              
+     {  token ? (
+        <HStack spacing="8" minW="240px" justify="space-between">
+        <Text fontSize="lg" >Welcome Back { username }</Text>
+        <Logout />
+        </HStack>
+     ) : (
+          <HStack spacing="8" minW="240px" justify="space-between">
+            <Button 
+              as="a" 
+              href="/login" 
+              color={mode('green.600', 'blue.300')} 
+              fontWeight="bold">
+              Sign In
+            </Button>
+          </HStack> 
+         )
+    }
         
-          {
-          currentUser ? (
-            <Box as="a" href="/logout" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign Out</Box>
-            ) : (
-            <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Box>)
-            }
-        
-        {/* <Button as="a" href="#" colorScheme="purple" fontWeight="bold">
-          Sign up for free
-        </Button> */}
-      </HStack>
     </Flex>
   )
 }

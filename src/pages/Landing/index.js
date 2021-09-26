@@ -1,12 +1,15 @@
 import { Box, Button, Flex, Heading,  Img, Stack, Text } from '@chakra-ui/react'
 import * as React from 'react'
-import { PartnerGrid } from "../PartnerGrid/PartnerGrid"
-import { Footer } from "../Footer/Footer"
+import { PartnerGrid } from "../../components/PartnerGrid/PartnerGrid"
+import { Footer } from "../../components/Footer/Footer"
 import  beach  from "../../static/images/beach.jpg"
+import { Navbar } from '../../components/Navbar/Navbar';
 
-export const Landing = () => {
+
+const Landing = () => {
   return (
     <div>
+      <Navbar/>
     <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Box py="32" borderWidth="1px" position="relative" zIndex={1}>
         <Box 
@@ -33,8 +36,9 @@ export const Landing = () => {
               mt="4"
               maxW="lg"
             >
-              Join thousands of students in New Zealand who are helping researchers understand our impact on the environment.
+              Join thousands of students throughout New Zealand who are helping researchers understand our impact on the environment.
             </Text>
+            
             <Stack
               direction={{
                 base: 'column',
@@ -88,3 +92,5 @@ export const Landing = () => {
           </div>
   )
 }
+
+export default Landing;
