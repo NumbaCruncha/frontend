@@ -22,11 +22,16 @@ import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { FieldGroup } from './FieldGroup'
 import { CurrencySelect } from './CurrencySelect'
 import { LanguageSelect } from './LanguageSelect'
+import { useAuthState, useAuthDispatch } from '../../context';
 
 // let user = localStorage.getItem(JSON.parse('currentUser')
 
 
 function Form() {
+  let { loading, errorMessage, token, user } = useAuthState();
+  const username = user.username
+  const email = user.email
+
   return(
   <Box
     px={{
@@ -51,12 +56,12 @@ function Form() {
           <VStack width="full" spacing="6">
             <FormControl id="name">
               <FormLabel>Name</FormLabel>
-              <Input type="text" maxLength={255} />
+              <Input type="text" value={username} maxLength={255} />
             </FormControl>
 
             <FormControl id="email">
               <FormLabel>Email</FormLabel>
-              <Input type="email" />
+              <Input type="email" value={email}/>
             </FormControl>
 
             <FormControl id="bio">

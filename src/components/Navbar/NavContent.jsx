@@ -22,8 +22,9 @@ import { loginUser, useAuthState, useAuthDispatch } from '../../context';
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
-  const { currentUser, isLoggedIn } = props
   
+  let { token, user } = useAuthState();
+  const username = user.username
 
   return (
     <>
@@ -56,15 +57,15 @@ const MobileNavContext = (props) => {
           ),
         )}
 
-          {/* {
-          currentUser ? (
+          {
+          token ? (
             <Box as="a" color={mode('blue.600', 'blue.300')} fontWeight="bold">
-              Sign Out
+              <Text fontSize="lg" >Welcome Back { username }</Text>
               <Logout />
               </Box>
             ) : (
-            <Box as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Box>)
-            } */}
+            <Button as="a" href="/login" color={mode('blue.600', 'blue.300')} fontWeight="bold">Sign In</Button>)
+            }
       </NavMenu>
     </>
   )
@@ -72,10 +73,8 @@ const MobileNavContext = (props) => {
 
 const DesktopNavContent = (props) => {
 
-  // const currentUser = useContext(UserContext);
-  const dispatch = useAuthDispatch();
-  const { loading, errorMessage, token, user } = useAuthState();
-
+  let { token, user } = useAuthState();
+  const username = user.username
 
   return (
     <Flex className="nav-content__desktop" align="center" justify="space-between" {...props}>
@@ -97,10 +96,10 @@ const DesktopNavContent = (props) => {
           </Box>
         ))}
       </HStack>
-
+              
      {  token ? (
         <HStack spacing="8" minW="240px" justify="space-between">
-        <Text fontSize="2xl" >Welcome Back<Badge> { user }</Badge></Text>
+        <Text fontSize="lg" >Welcome Back { username }</Text>
         <Logout />
         </HStack>
      ) : (

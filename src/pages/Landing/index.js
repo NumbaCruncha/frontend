@@ -36,8 +36,9 @@ const Landing = () => {
               mt="4"
               maxW="lg"
             >
-              Join thousands of students in New Zealand who are helping researchers understand our impact on the environment.
+              Join thousands of students throughout New Zealand who are helping researchers understand our impact on the environment.
             </Text>
+            
             <Stack
               direction={{
                 base: 'column',

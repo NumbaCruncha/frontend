@@ -1,12 +1,12 @@
 import React, { useState, useReducer } from 'react';
 
-let user = localStorage.getItem('user')
-	? JSON.stringify(localStorage.getItem('user'))
+let user = localStorage.getItem('currentUser')
+	? JSON.parse(localStorage.getItem('currentUser'))
 	: '';
 
 
 let token = localStorage.getItem('token')
-	? JSON.stringify(localStorage.getItem('token'))
+	? JSON.parse(localStorage.getItem('token'))
 	: '';
 
 

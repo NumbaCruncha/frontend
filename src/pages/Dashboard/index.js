@@ -18,7 +18,7 @@ function UI(){
             md: 'flex',
           }}
         />
-        <Flex
+        {/* <Flex
           display={{
             base: 'none',
             lg: 'block',
@@ -34,7 +34,7 @@ function UI(){
           <Form />
           </Box>
 
-        </Flex>
+        </Flex> */}
 
         <Flex flex="1" p="6">
           <Box borderWidth="2px" rounded="base" borderStyle="dashed" h="full" w="full"><Form /></Box>

@@ -1,8 +1,12 @@
 import { Avatar, Flex, HStack, Text, useColorModeValue as mode } from '@chakra-ui/react'
 import * as React from 'react'
+import { loginUser, useAuthState, useAuthDispatch } from '../../context';
 
 export const UserProfile = (props) => {
-  const { name, image, email } = props
+  const { image} = props
+  let { user } = useAuthState();
+  const name = user.username
+  const email = user.email
 
   
   return (
